@@ -1,0 +1,48 @@
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+h2 {
+  color: #00bcd4;
+  font-size: 1.5em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.info-label {
+  font-weight: bold;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.job, .edu {
+  margin-bottom: 10px;
+}
+
+.job span, .edu span {
+  display: block;
+  font-weight: bold;
+}

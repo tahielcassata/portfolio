@@ -1,154 +1,104 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>CV - Tahiel Pablo Cassata</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
-
-    .container {
-      display: flex;
-      max-width: 1000px;
-      margin: 40px auto;
-      background-color: #fff;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-
-    .sidebar {
-      background-color: #eaeaea;
-      width: 35%;
-      padding: 30px;
-    }
-
-    .main {
-      width: 65%;
-      padding: 30px;
-    }
-
-    .photo {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 5px;
-    }
-
-    h2 {
-      color: #00bcd4;
-      font-size: 1.2em;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-      margin-top: 30px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .info-label {
-      font-weight: bold;
-    }
-
-    .section {
-      margin-bottom: 20px;
-    }
-
-    .job, .edu {
-      margin-bottom: 10px;
-    }
-
-    .job span, .edu span {
-      display: block;
-      font-weight: bold;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Portafolio - Tahiel Pablo Cassata</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-  <div class="container">
-    <!-- Sidebar izquierda -->
-    <div class="sidebar">
-      <img src="https://via.placeholder.com/250x250.png?text=Foto" alt="Foto de perfil" class="photo">
-
-      <div class="section">
-        <h2>Perfil</h2>
-        <p><span class="info-label">Dirección:</span> Mi dirección</p>
-        <p><span class="info-label">Email:</span> tahielcassata10@Gmail.com</p>
-        <p><span class="info-label">Teléfono:</span> 11-3666-7941</p>
-        <p><span class="info-label">Fecha de nacimiento:</span> 26/09/2004</p>
-      
-      </div>
-
-      <div class="section">
-        <h2>Idiomas</h2>
-        <ul>
-          <li>Español</li>
-          <li>Inglés básico</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h2>Habilidades</h2>
-        <ul>
-          <li>Trabajo en equipo</li>
-          <li>Comunicación</li>
-          <li>Resolución de problemas</li>
-          <li>Manejo de Office</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h2>Intereses</h2>
-        <ul>
-          <li>Tecnología</li>
-          <li>Videojuegos</li>
-          <li>Programación</li>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Mi Portafolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#sobremi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
         </ul>
       </div>
     </div>
+  </nav>
 
-    <!-- Contenido principal -->
-    <div class="main">
-      <h1>Tahiel Pablo Cassata</h1>
-      <p><em>Estudiante de Analista de Sistemas</em></p>
-
-      <div class="section">
-        <p>Estudiante de segundo año de la carrera de Analista de Sistemas. Inició la Tecnicatura en el año 2024 en la institución Túpac Amaru II. Interesado en el desarrollo de software, resolución de problemas y el aprendizaje constante.</p>
+  <!-- SOBRE MI -->
+  <section id="sobremi" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2>Sobre mí</h2>
+        <p>Soy <strong>Tahiel Pablo Cassata</strong>, estudiante de la Tecnicatura en Análisis de Sistemas en Tupac Amaru II desde 2024.</p>
+        <p>Título secundario en Escuela Nuestra Señora del Rosario.</p>
       </div>
 
-      <div class="section">
-        <h2>Experiencia Profesional</h2>
-        <div class="job">
-          <span>2025 - Actualidad</span>
-          <strong>Estudiante de Sistemas</strong> - Túpac Amaru II
-          <p>Participación activa en proyectos académicos, resolución de casos prácticos, uso de herramientas como Visual Studio, SQL Server y Git.</p>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Educación</h2>
-        <div class="edu">
-          <span>2025 - Actualidad</span>
-          <strong>Tecnicatura en Análisis de Sistemas</strong> - Túpac Amaru II
-          <p>Formación orientada al desarrollo de sistemas, bases de datos, redes y fundamentos de programación.</p>
-        </div>
-        <div class="edu">
-          <span>2017 - 2022</span>
-          <strong>Secundario Completo</strong> - Escuela Nuestra Señora del Rosario
-    <p>Finalización del nivel secundario con orientación en ciencias sociales y humanidades.</p>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Contacto Personal</h5>
+              <ul class="list-unstyled">
+                <li><strong>Email:</strong> tahielcassata10@gmail.com</li>
+                <li><strong>Teléfono:</strong> 11-3666-7941</li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/tahielcassata" target="_blank">github.com/tahielcassata</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Mis Proyectos</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Proyecto Sistema Académico">
+            <div class="card-body">
+              <h5 class="card-title">Sistema Académico</h5>
+              <p class="card-text">Proyecto desarrollado para la gestión académica, incluye funcionalidades de alumnos, materias y reportes.</p>
+              <a href="https://github.com/tahielcassata/sistema_academico" class="btn btn-primary" target="_blank">Ver en GitHub</a>
+            </div>
+          </div>
+        </div>
+        <!-- Más proyectos pueden agregarse aquí -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Contacto</h2>
+      <form action="https://formspree.io/f/tu-codigo-aqui" method="POST" class="mx-auto" style="max-width: 600px;">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="nombre" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" name="email" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="mensaje" class="form-label">Mensaje</label>
+          <textarea class="form-control" name="mensaje" id="mensaje" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white text-center py-3">
+    © 2025 Tahiel Pablo Cassata. Todos los derechos reservados.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
