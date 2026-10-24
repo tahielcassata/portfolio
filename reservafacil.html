@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ReservaFácil · Tahiel Cassata</title>
+<meta name="description" content="Cómo funciona ReservaFácil, el sistema de turnos con recordatorios por WhatsApp de Tahiel Cassata.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+</head>
+<body>
+<div class="wrap">
+  <a class="volver" href="index.html#proyectos">← Volver al portfolio</a>
+  <header class="p-head">
+    <div class="meta"><span class="label">Para comercios que dan turnos</span><span class="estado">Funcionando · v3</span></div>
+    <h1>ReservaFácil</h1>
+    <p class="intro">Sistema de turnos gratis: el cliente reserva solo desde un link y el dueño maneja todo desde su panel. El día anterior manda los recordatorios por WhatsApp con un toque. Corre en Google Apps Script y guarda todo en una planilla de Google Sheets.</p>
+    <div class="stack"><span>Google Apps Script</span><span>JavaScript</span><span>HTML / CSS</span><span>Google Sheets</span><span>LockService</span><span>WhatsApp (wa.me)</span></div>
+    <div class="p-links"><a class="btn" href="https://github.com/tahielcassata/reservafacil" target="_blank" rel="noopener">Ver código en GitHub ↗</a></div>
+  </header>
+
+  <div id="demo" class="demo"></div>
+</div>
+
+<main class="flujo">
+  <div class="wrap">
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 1 · una sola vez</span><h2>Puesta en marcha</h2><p>Se instala en la cuenta de Google del negocio en unos 15 minutos.</p></div>
+      <div class="cards">
+        <div class="card"><span class="label">Planilla</span><h3>Copia de la planilla modelo</h3><p>Trae el código adentro. Al ejecutar <b>setup</b> se crean las hojas Turnos y Config.</p></div>
+        <div class="card"><span class="label">Config</span><h3>Horarios del negocio</h3><p>Primer y último turno, minutos por turno, días de atención, anticipación mínima, clave del panel y WhatsApp.</p></div>
+        <div class="card"><span class="label">Publicar</span><h3>Dos links</h3><p>Uno para los clientes y otro (con <code>?p=admin</code>) para el panel del dueño.</p></div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 2 · cliente</span><h2>Reserva en tres toques</h2><p>Sin descargar nada y sin registrarse. Tocá cada paso para verlo en el demo.</p></div>
+      <div class="cadena">
+        <button type="button" class="card" data-ir="0"><span class="label">Toque 1</span><h3>Elige el día</h3><p>Solo aparecen los días de atención, con cuántos horarios libres quedan.</p><span class="ver">Ver en el demo ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="1"><span class="label">Toque 2</span><h3>Elige el horario</h3><p>Los ocupados ni se muestran: no hay forma de pisar un turno.</p><span class="ver">Ver en el demo ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="2"><span class="label">Toque 3</span><h3>Deja sus datos</h3><p>Nombre, celular y si quiere el recordatorio por WhatsApp.</p><span class="ver">Ver en el demo ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="3"><span class="label">Listo</span><h3>Turno confirmado</h3><p>Con botón para avisarle al negocio por WhatsApp.</p><span class="ver">Ver en el demo ↑</span></button>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 3 · todos los días</span><h2>El ciclo del dueño</h2><p>Desde el celular, con un panel protegido por clave.</p></div>
+      <div class="cards">
+        <button type="button" class="card" data-ir="4"><span class="label">Agenda</span><h3>Ve el día</h3><p>Cada turno muestra si reservó online, si lo cargó él o si es un bloqueo.</p><span class="ver">Ver en el demo ↑</span></button>
+        <button type="button" class="card" data-ir="5"><span class="label">Nuevo</span><h3>Carga turnos por teléfono</h3><p>Si el cliente ya vino, el celular se completa solo.</p><span class="ver">Ver en el demo ↑</span></button>
+        <button type="button" class="card" data-ir="6"><span class="label">Avisos</span><h3>Recordatorios del día siguiente</h3><p>Toca <b>Enviar</b> y se abre WhatsApp con el mensaje escrito. Queda marcado como avisado.</p><span class="ver">Ver en el demo ↑</span></button>
+      </div>
+      <p class="ciclo">Al otro día, el mismo ciclo con los turnos nuevos.</p>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 4 · cuando hace falta</span><h2>Imprevistos</h2></div>
+      <div class="cards">
+        <button type="button" class="card" data-ir="9"><span class="label">Bloquear día</span><h3>Cerrar un día con turnos dados</h3><p>El panel muestra quiénes tenían turno y permite cancelarlos de una vez.</p><span class="ver">Ver en el demo ↑</span></button>
+        <button type="button" class="card" data-ir="10"><span class="label">Aviso</span><h3>Avisar a cada cliente</h3><p>Un botón por cliente con el mensaje de cancelación listo para mandar.</p><span class="ver">Ver en el demo ↑</span></button>
+        <div class="card"><span class="label">Cancelar</span><h3>Cancelar un turno suelto</h3><p>Confirmación dentro de la página y aviso por WhatsApp al cliente.</p></div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Bajo el capó</span><h2>Lo que lo hace confiable</h2></div>
+      <ul class="reglas">
+        <li><b>Nunca dos turnos en el mismo horario</b><span>Si dos personas confirman a la vez, un bloqueo (LockService) deja pasar a una sola y a la otra le avisa.</span></li>
+        <li><b>Anticipación mínima</b><span>Para hoy no se pueden reservar horarios que ya pasaron ni los de las próximas 2 horas.</span></li>
+        <li><b>Datos guardados como texto</b><span>Evita que la planilla convierta "09:00" en una hora o los ID en números, un error que encontré en las pruebas.</span></li>
+        <li><b>Consentimiento</b><span>El cliente elige si quiere recibir el recordatorio por WhatsApp.</span></li>
+        <li><b>Historial</b><span>Los turnos cancelados no se borran: quedan marcados en la planilla.</span></li>
+        <li><b>Costo cero</b><span>Solo usa Google Sheets, Apps Script y links de WhatsApp.</span></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="pie"><div class="wrap"><span>Tahiel Cassata · San Martín, Buenos Aires</span><a href="index.html#proyectos">← Volver al portfolio</a></div></footer>
+
+<script src="demo.js"></script>
+<script>
+var H = function (t, s) { return '<div class="ap-h"><small>' + (s || 'ReservaFácil') + '</small><b>' + t + '</b></div>'; };
+var TABS = function (on) { return '<div class="ap-tabs">' + ['Nuevo', 'Agenda', 'Avisos'].map(function (x) { return '<span' + (x === on ? ' class="on"' : '') + '>' + x + '</span>'; }).join('') + '</div>'; };
+var P = 'ReservaFácil · Panel del dueño';
+Demo('#demo', {
+  modo: 'pantallas',
+  titulo: 'ReservaFácil',
+  pasos: [
+    { grupo: 'El cliente reserva', titulo: 'Abre el link y elige el día',
+      html: H('Reservá tu turno') + '<div class="ap-b"><h5>¿Qué día te queda bien?</h5><div class="g2">' +
+        '<div class="bt">Lunes 26/10<small>19 libres</small></div><div class="bt toca">Martes 27/10<small>17 libres</small></div>' +
+        '<div class="bt">Miércoles 28/10<small>18 libres</small></div><div class="bt">Jueves 29/10<small>19 libres</small></div>' +
+        '<div class="bt">Viernes 30/10<small>16 libres</small></div><div class="bt">Sábado 31/10<small>12 libres</small></div></div></div>' },
+    { grupo: 'El cliente reserva', titulo: 'Ve solo los horarios libres',
+      html: H('Reservá tu turno') + '<div class="ap-b"><h5>Elegí el horario</h5><p class="ap-nota">Martes 27/10 · solo se muestran los horarios libres</p><div class="g3">' +
+        ['09:00','09:30','10:30','11:00','12:00','14:00','14:30','15:30','16:00','17:00','17:30','18:00'].map(function (h) { return '<div class="bt' + (h === '15:30' ? ' toca' : '') + '">' + h + '</div>'; }).join('') + '</div></div>' },
+    { grupo: 'El cliente reserva', titulo: 'Deja sus datos y confirma',
+      html: H('Reservá tu turno') + '<div class="ap-b"><h5>Tus datos</h5><div class="inp"><small>Día y hora</small>Martes 27/10 · 15:30 hs</div>' +
+        '<div class="inp"><small>Nombre y apellido</small>Ana López</div><div class="inp"><small>Celular</small>11 5555 6666</div>' +
+        '<div class="chk"><i></i>Quiero que me recuerden el turno por WhatsApp</div><div class="cta toca">Confirmar turno</div></div>' },
+    { grupo: 'El cliente reserva', titulo: 'Turno confirmado', dur: 3200,
+      html: H('Reservá tu turno') + '<div class="ap-b centro"><div class="tilde">✓</div><h5>¡Turno reservado!</h5><p class="ap-nota">Ana López, te esperamos el Martes 27/10 a las 15:30 hs.</p>' +
+        '<div class="cta wa">Avisar al negocio por WhatsApp</div></div>' },
+    { grupo: 'El dueño en su panel', titulo: 'La reserva aparece en la agenda',
+      html: H('Agenda', P) + TABS('Agenda') + '<div class="ap-b"><div class="inp">Martes 27/10</div>' +
+        '<div class="row"><b>10:00</b><div class="n">Sofía Ruiz<small>11 3344 5566</small></div><span class="tg on">Reservó online</span></div>' +
+        '<div class="row"><b>13:00</b><div class="n">Almuerzo</div><span class="tg bl">Bloqueado</span></div>' +
+        '<div class="row toca"><b>15:30</b><div class="n">Ana López<small>11 5555 6666</small></div><span class="tg on">Reservó online</span></div>' +
+        '<div class="row"><b>17:00</b><div class="n">Lucía Gómez<small>11 2233 4455</small></div><span class="tg du">Cargado por vos</span></div></div>' },
+    { grupo: 'El dueño en su panel', titulo: 'Carga un turno que le pidieron por teléfono',
+      html: H('Nuevo turno', P) + TABS('Nuevo') + '<div class="ap-b"><div class="inp">Miércoles 28/10</div><div class="g3">' +
+        ['09:00','09:30','10:00','10:30','11:00','11:30'].map(function (h) { return '<div class="bt' + (h === '11:00' ? ' sel' : '') + '">' + h + '</div>'; }).join('') + '</div>' +
+        '<div class="inp"><small>Nombre</small>Juan Pérez</div><div class="inp"><small>Celular · se completó solo</small>11 4567 8901</div><div class="cta toca">Guardar turno</div></div>' },
+    { grupo: 'El día anterior', titulo: 'Abre Avisos y toca Enviar',
+      html: H('Recordatorios', P) + TABS('Avisos') + '<div class="ap-b"><h5>Turnos de mañana · Martes 27/10</h5><p class="ap-nota">1 avisado · 2 por avisar</p>' +
+        '<div class="row"><b>10:00</b><div class="n">Sofía Ruiz</div><span class="mn ok">✓ Avisado</span></div>' +
+        '<div class="row"><b>15:30</b><div class="n">Ana López</div><span class="mn wa toca">Enviar</span></div>' +
+        '<div class="row"><b>17:00</b><div class="n">Lucía Gómez</div><span class="mn wa">Enviar</span></div></div>' },
+    { grupo: 'El día anterior', titulo: 'WhatsApp se abre con el mensaje escrito', dur: 3400,
+      html: '<div class="wa-h"><i>AL</i><div><b>Ana López</b><br><small>+54 9 11 5555 6666</small></div></div><div class="wa-b">' +
+        '<div class="wa-in"><div>Hola Ana, te recuerdo que mañana tenés turno a las 15:30 hs. Si no podés venir, avisanos por acá. ¡Te esperamos!</div><span class="toca">➤</span></div></div>' },
+    { grupo: 'El día anterior', titulo: 'Queda marcado como avisado',
+      html: H('Recordatorios', P) + TABS('Avisos') + '<div class="ap-b"><h5>Turnos de mañana · Martes 27/10</h5><p class="ap-nota">2 avisados · 1 por avisar</p>' +
+        '<div class="row"><b>10:00</b><div class="n">Sofía Ruiz</div><span class="mn ok">✓ Avisado</span></div>' +
+        '<div class="row"><b>15:30</b><div class="n">Ana López</div><span class="mn ok toca">✓ Avisado</span></div>' +
+        '<div class="row"><b>17:00</b><div class="n">Lucía Gómez</div><span class="mn wa">Enviar</span></div></div>' },
+    { grupo: 'Imprevistos', titulo: 'Bloquea un día que ya tenía turnos', dur: 3200,
+      html: H('Nuevo turno', P) + TABS('Nuevo') + '<div class="ap-b"><div class="caja"><h5>Bloquear el Jueves 29/10</h5><p class="ap-nota">Ese día ya hay 2 turnos dados:</p>' +
+        '<div class="row"><b>10:00</b><div class="n">Juan Pérez</div></div><div class="row"><b>16:00</b><div class="n">Marcos Díaz</div></div>' +
+        '<div class="cta toca">Bloquear y cancelar estos turnos</div><div class="cta sec">Bloquear solo los libres</div></div></div>' },
+    { grupo: 'Imprevistos', titulo: 'Avisa a cada cliente con un toque', dur: 3200,
+      html: H('Nuevo turno', P) + TABS('Nuevo') + '<div class="ap-b"><div class="caja"><div class="okbox">✓ Jueves 29/10 bloqueado · 2 turnos cancelados</div><h5>Avisá a los clientes</h5>' +
+        '<div class="row"><b>10:00</b><div class="n">Juan Pérez</div><span class="mn wa toca">Avisar</span></div>' +
+        '<div class="row"><b>16:00</b><div class="n">Marcos Díaz</div><span class="mn wa">Avisar</span></div>' +
+        '<p class="ap-nota">Cada botón abre WhatsApp con el aviso de cancelación escrito.</p></div></div>' }
+  ]
+});
+</script>
+</body>
+</html>

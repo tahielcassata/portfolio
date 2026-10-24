@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bot de arreglos · Tahiel Cassata</title>
+<meta name="description" content="Cómo funciona el bot de Telegram que registra el historial de arreglos de una bicicletería.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+</head>
+<body>
+<div class="wrap">
+  <a class="volver" href="index.html#proyectos">← Volver al portfolio</a>
+  <header class="p-head">
+    <div class="meta"><span class="label">Para Bicicletería Ave Fénix</span><span class="estado">En uso</span></div>
+    <h1>Bot de historial de arreglos</h1>
+    <p class="intro">Bot de Telegram que reemplaza las boletas de papel. Se maneja con botones y guarda cada arreglo en una planilla de Google Sheets usando el celular del cliente como clave. Con eso se consulta el historial de cada bici y se genera un QR único por cliente.</p>
+    <div class="stack"><span>Google Apps Script</span><span>Telegram Bot API</span><span>Google Sheets</span><span>VS Code + clasp</span><span>Git</span></div>
+    <div class="p-links"><a class="btn" href="https://github.com/tahielcassata/bot-historial-arreglos" target="_blank" rel="noopener">Ver código en GitHub ↗</a></div>
+  </header>
+
+  <div id="demo" class="demo"></div>
+</div>
+
+<main class="flujo">
+  <div class="wrap">
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 1 · una sola vez</span><h2>Puesta en marcha</h2><p>Sin servidores ni compus prendidas: todo corre en la nube de Google.</p></div>
+      <div class="cards">
+        <div class="card"><span class="label">Telegram</span><h3>Bot creado en BotFather</h3><p>El bot es <b>@Historial_Control_bot</b> y se usa desde el celular del local.</p></div>
+        <div class="card"><span class="label">Planilla</span><h3>Google Sheets como base</h3><p>Una hoja con los arreglos y una pestaña de Configuración para reutilizarlo en otro negocio.</p></div>
+        <div class="card"><span class="label">Código</span><h3>Apps Script + clasp</h3><p>Lo programo en VS Code, lo subo con clasp y lo versiono en GitHub.</p></div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 2 · al recibir una bici</span><h2>Cargar un arreglo</h2><p>Tocá cada paso para verlo en el demo.</p></div>
+      <div class="cadena">
+        <button type="button" class="card" data-ir="0"><span class="label">Botón</span><h3>Nuevo</h3><p>Sin escribir comandos.</p><span class="ver">Ver ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="1"><span class="label">Clave</span><h3>Celular del cliente</h3><p>Si es nuevo, pide nombre y bici.</p><span class="ver">Ver ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="4"><span class="label">Trabajo</span><h3>Qué se hizo</h3><p>Se escribe a mano, sin pagar una IA que lea fotos.</p><span class="ver">Ver ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="5"><span class="label">Opcional</span><h3>Foto de la boleta</h3><p>Y el bot responde "Listo, guardado".</p><span class="ver">Ver ↑</span></button>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 3 · cliente que vuelve</span><h2>Suma al historial</h2><p>Si el celular ya existe, no vuelve a pedir el nombre y nunca borra los arreglos anteriores.</p></div>
+      <div class="cards">
+        <button type="button" class="card" data-ir="7"><span class="label">Un solo paso</span><h3>¿En qué bici es?</h3><p>Muestra un botón por cada bici ya cargada (hasta 4), más "Otra bici" y "Cancelar".</p><span class="ver">Ver en el demo ↑</span></button>
+        <button type="button" class="card" data-ir="8"><span class="label">Historial</span><h3>Se agrega, no se pisa</h3><p>El arreglo nuevo queda junto a los anteriores de esa bici.</p><span class="ver">Ver en el demo ↑</span></button>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 4 · cuando preguntan</span><h2>Consultar y QR</h2></div>
+      <div class="cards">
+        <button type="button" class="card" data-ir="9"><span class="label">Consultar</span><h3>Por celular</h3><p>Muestra todos los arreglos del cliente, bici por bici.</p><span class="ver">Ver en el demo ↑</span></button>
+        <button type="button" class="card" data-ir="11"><span class="label">QR</span><h3>Un QR por cliente</h3><p>Aparece solo al consultar, nunca al guardar. Lleva el historial completo como texto.</p><span class="ver">Ver en el demo ↑</span></button>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Siempre igual</span><h2>El patrón de cada carga</h2><p>Todas las operaciones siguen la misma secuencia, así cualquiera del local lo aprende rápido.</p></div>
+      <div class="cadena">
+        <div class="card"><span class="label">1</span><h3>Tocás un botón</h3></div><span class="flecha" aria-hidden="true">→</span>
+        <div class="card"><span class="label">2</span><h3>El bot pregunta</h3></div><span class="flecha" aria-hidden="true">→</span>
+        <div class="card"><span class="label">3</span><h3>Respondés</h3></div><span class="flecha" aria-hidden="true">→</span>
+        <div class="card"><span class="label">4</span><h3>El bot confirma</h3></div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Decisiones</span><h2>Por qué está hecho así</h2></div>
+      <ul class="reglas">
+        <li><b>Telegram en vez de una app</b><span>Ya está en el celular, los botones son gratis y no hay que instalar nada.</span></li>
+        <li><b>Celular como identificador</b><span>Es el dato que todo cliente tiene a mano y no se repite.</span></li>
+        <li><b>Carga manual por texto</b><span>Leer fotos con IA tenía costo; escribir el trabajo lleva segundos.</span></li>
+        <li><b>QR con texto, no con link</b><span>Se lee sin internet ni permisos. Si hay un arreglo nuevo, se reimprime.</span></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="pie"><div class="wrap"><span>Tahiel Cassata · San Martín, Buenos Aires</span><a href="index.html#proyectos">← Volver al portfolio</a></div></footer>
+
+<script src="demo.js"></script>
+<script>
+var MENU = function (toca) { return { t: '¿Qué querés hacer?', kb: ['Nuevo', 'Consultar'], toca: toca }; };
+Demo('#demo', {
+  modo: 'chat',
+  titulo: 'Bot de arreglos',
+  cabecera: '<div class="tg-h"><i>HA</i><div><b>Historial de arreglos</b><small>bot</small></div></div>',
+  alRender: function (tel) { var c = tel.querySelector('canvas.qr'); if (c) dibujarQR(c, 11); },
+  pasos: [
+    { grupo: 'Cargar · cliente nuevo', titulo: 'Toca Nuevo', nuevo: true, msgs: [MENU(0)] },
+    { grupo: 'Cargar · cliente nuevo', titulo: 'Escribe el celular del cliente', msgs: [{ t: 'Pasame el celular del cliente.' }, { yo: 1, t: '11 5555 6666' }] },
+    { grupo: 'Cargar · cliente nuevo', titulo: 'Es nuevo: el bot pide el nombre', msgs: [{ t: 'Cliente nuevo. ¿Cómo se llama?' }, { yo: 1, t: 'Ana López' }] },
+    { grupo: 'Cargar · cliente nuevo', titulo: 'Anota qué bici es', msgs: [{ t: '¿Qué bici es?' }, { yo: 1, t: 'Urbana rodado 28' }] },
+    { grupo: 'Cargar · cliente nuevo', titulo: 'Escribe el trabajo realizado', msgs: [{ t: '¿Qué trabajo se hizo?' }, { yo: 1, t: 'Cambio de cadena y ajuste de cambios' }] },
+    { grupo: 'Cargar · cliente nuevo', titulo: 'Foto de la boleta (opcional) y listo', dur: 3400,
+      msgs: [{ t: '¿Querés sumar una foto de la boleta?', kb: ['Subir foto', 'Saltear'], toca: 1 }, { t: '✅ Listo, guardado.' }] },
+    { grupo: 'Cargar · cliente que vuelve', titulo: 'Nuevo arreglo para un cliente conocido', nuevo: true,
+      msgs: [MENU(0), { t: 'Pasame el celular del cliente.' }, { yo: 1, t: '11 4567 8901' }] },
+    { grupo: 'Cargar · cliente que vuelve', titulo: 'Ya existe: elige la bici con un botón', dur: 3400,
+      msgs: [{ t: '<b>Juan Pérez</b> ya está guardado.<br>¿En qué bici es el trabajo nuevo?', kb: ['Mountain bike R29', 'Plegable R20', 'Otra bici', 'Cancelar'], toca: 0 }] },
+    { grupo: 'Cargar · cliente que vuelve', titulo: 'Se suma al historial sin borrar nada', dur: 3200,
+      msgs: [{ t: '¿Qué trabajo se hizo?' }, { yo: 1, t: 'Service completo + frenos' }, { t: '✅ Listo, guardado. Se sumó al historial de Juan.' }] },
+    { grupo: 'Consultar', titulo: 'Toca Consultar', nuevo: true, msgs: [MENU(1), { t: 'Pasame el celular del cliente.' }, { yo: 1, t: '11 4567 8901' }] },
+    { grupo: 'Consultar', titulo: 'Ve el historial completo', dur: 3600,
+      msgs: [{ t: '<b>Juan Pérez</b><br>Mountain bike R29<ul class="hist"><li>12/08 · Cambio de cubiertas</li><li>03/10 · Service completo + frenos</li></ul>Plegable R20<ul class="hist"><li>21/09 · Parche y cámara nueva</li></ul>¿Querés el QR del historial?', kb: ['Sí', 'No'], toca: 0 }] },
+    { grupo: 'Consultar', titulo: 'Un solo QR con todo el historial', dur: 3600,
+      msgs: [{ t: '<canvas class="qr" aria-label="QR de ejemplo"></canvas>QR de Juan Pérez con todos sus arreglos. Si hay uno nuevo, se reimprime.' }] }
+  ]
+});
+</script>
+</body>
+</html>
