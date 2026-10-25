@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Control de caja diario · Tahiel Cassata</title>
+<meta name="description" content="Cómo funciona Control de caja diario: cobros desde una tablet, cierre del día automático, modo sin internet y administración con PIN para negocios de servicios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+</head>
+<body>
+<div class="wrap">
+  <a class="volver" href="index.html#proyectos">← Volver al portfolio</a>
+  <header class="p-head">
+    <div class="meta"><span class="label">Para negocios de servicios: barbería, peluquería, uñas, estética</span><span class="estado">Terminado</span></div>
+    <h1>Control de caja diario</h1>
+    <p class="intro">Web app para dejar de anotar los cobros en papel. Desde una tablet en la caja se carga cada cobro en segundos, por puesto de trabajo, con efectivo o transferencia y la propina aparte. Al final del día el cierre se arma solo, y si se corta internet se sigue cobrando igual.</p>
+    <div class="stack"><span>Google Apps Script</span><span>JavaScript</span><span>HTML / CSS</span><span>Google Sheets</span><span>VS Code + clasp</span><span>Node.js (pruebas)</span></div>
+  </header>
+
+  <div id="demo" class="demo"></div>
+</div>
+
+<main class="flujo">
+  <div class="wrap">
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 1 · cada cliente</span><h2>Cargar un cobro</h2><p>Lo hace una sola persona en la caja. Tocá cada paso para verlo.</p></div>
+      <div class="cadena">
+        <button type="button" class="card" data-ir="0"><span class="label">1</span><h3>Puesto</h3><p>Quién hizo el trabajo.</p><span class="ver">Ver ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="1"><span class="label">2</span><h3>Servicio</h3><p>El precio se completa solo.</p><span class="ver">Ver ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="2"><span class="label">3</span><h3>Medio de pago</h3><p>Efectivo o transferencia.</p><span class="ver">Ver ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="3"><span class="label">4</span><h3>Propina</h3><p>Opcional, y puede ir por otro medio.</p><span class="ver">Ver ↑</span></button>
+        <span class="flecha" aria-hidden="true">→</span>
+        <button type="button" class="card" data-ir="4"><span class="label">Listo</span><h3>Guardado</h3><p>Con fecha y hora, y se puede deshacer.</p><span class="ver">Ver ↑</span></button>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 2 · si se corta internet</span><h2>Sigue cobrando</h2><p>La caja no se frena por el Wi‑Fi.</p></div>
+      <div class="cards">
+        <button type="button" class="card" data-ir="5"><span class="label">Sin conexión</span><h3>Se guarda en la tablet</h3><p>Cada cobro queda guardado en el navegador, con un aviso de cuántos faltan subir. Los totales ya los incluyen.</p><span class="ver">Ver en el demo ↑</span></button>
+        <button type="button" class="card" data-ir="6"><span class="label">Vuelve internet</span><h3>Se suben solos</h3><p>En orden, sin duplicarse y con la hora real en que se cobró.</p><span class="ver">Ver en el demo ↑</span></button>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 3 · fin del día</span><h2>Cierre automático</h2><p>Nadie suma a mano.</p></div>
+      <div class="cards">
+        <button type="button" class="card" data-ir="7"><span class="label">Por puesto</span><h3>Atenciones, plata y propinas</h3><p>Cuántos trabajos hizo cada puesto, cuánto cobró y qué propina hay que entregarle.</p><span class="ver">Ver en el demo ↑</span></button>
+        <div class="card"><span class="label">Automático</span><h3>Se cierra solo</h3><p>Con un botón o a la hora configurada si nadie lo cierra. Al otro día la pantalla arranca en cero y el historial queda guardado.</p></div>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Etapa 4 · administración</span><h2>Configuración con PIN</h2><p>Solo el dueño cambia lo que afecta a la plata.</p></div>
+      <div class="cards">
+        <button type="button" class="card" data-ir="8"><span class="label">Acceso</span><h3>Entrar con PIN</h3><p>PIN de 6 números, bloqueo cada vez más largo por intentos fallidos y salida automática a los 2 minutos sin uso.</p><span class="ver">Ver en el demo ↑</span></button>
+        <button type="button" class="card" data-ir="9"><span class="label">Polirubro</span><h3>Servicios del rubro</h3><p>Plantillas para barbería, peluquería, uñas, estética o spa, y precios que se cambian sin tocar el código.</p><span class="ver">Ver en el demo ↑</span></button>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-h"><span class="num">Reglas del negocio</span><h2>Lo que tuve en cuenta</h2></div>
+      <ul class="reglas">
+        <li><b>Transferencias a una sola cuenta</b><span>No se pueden confirmar en el momento, así que el control es por día.</span></li>
+        <li><b>Propina separada del cobro</b><span>Se registra aparte porque puede pagarse con otro medio que el servicio. La que el barbero recibe en mano no se carga.</span></li>
+        <li><b>Muchos cobros por día</b><span>Pensado para 10 a 12 puestos y unos 300 cobros diarios: la planilla se lee en bloques para seguir rápida con años de historial.</span></li>
+        <li><b>Los datos son del local</b><span>Todo queda en una planilla de Google de la cuenta del negocio, sin servidor ni costos de plataforma.</span></li>
+        <li><b>Licencia del servicio</b><span>Un panel propio avisa si hay un pago pendiente y puede pausar la carga de cobros, sin bloquear nunca los datos del cliente.</span></li>
+        <li><b>Probado</b><span>27 pruebas automáticas con un simulador de Google Apps Script en Node.js.</span></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="pie"><div class="wrap"><span>Tahiel Cassata · San Martín, Buenos Aires</span><a href="https://github.com/tahielcassata/control-de-caja-diario" target="_blank" rel="noopener">Ver código en GitHub ↗</a></div></footer>
+
+<script src="demo.js"></script>
+<script>
+var H = function (t, s) { return '<div class="ap-h"><small>' + (s || 'Barbería del Centro') + '</small><b>' + t + '</b></div>'; };
+var RES = function (extra) { return '<div class="inp"><small>Cobro en curso</small>' + extra + '</div>'; };
+var TOT = function (ef, tr) { return '<div class="g2"><div class="inp"><small>Efectivo</small><b>' + ef + '</b></div><div class="inp"><small>Transferencias</small><b>' + tr + '</b></div></div>'; };
+var PUESTOS = function (marcado) {
+  return '<div class="g3">' + [1, 2, 3, 4, 5, 6].map(function (n) {
+    return '<div class="bt' + (n === marcado ? ' toca' : '') + '"><small>Puesto</small>' + n + '</div>';
+  }).join('') + '</div>';
+};
+Demo('#demo', {
+  modo: 'pantallas',
+  titulo: 'Control de caja diario',
+  pasos: [
+    { grupo: 'Cargar un cobro', titulo: 'Elige el puesto',
+      html: H('Cobros de hoy') + '<div class="ap-b">' + TOT('$ 82.000', '$ 113.000') + '<h5>Puesto de trabajo</h5>' + PUESTOS(4) + '</div>' },
+    { grupo: 'Cargar un cobro', titulo: 'Elige el servicio: el precio se completa solo',
+      html: H('Cobros de hoy') + '<div class="ap-b">' + RES('Puesto 4') + '<h5>Servicio</h5><div class="g2">' +
+        '<div class="bt">Corte<small>$ 8.000</small></div><div class="bt">Barba<small>$ 5.000</small></div>' +
+        '<div class="bt toca">Corte y barba<small>$ 12.000</small></div><div class="bt">Perfilado de cejas<small>$ 3.000</small></div></div>' +
+        '<div class="inp"><small>Monto</small>$ 12.000</div></div>' },
+    { grupo: 'Cargar un cobro', titulo: 'Elige cómo pagó',
+      html: H('Cobros de hoy') + '<div class="ap-b">' + RES('Puesto 4 · Corte y barba · $ 12.000') + '<h5>Medio de pago</h5><div class="g2">' +
+        '<div class="bt">Efectivo</div><div class="bt toca">Transferencia</div></div></div>' },
+    { grupo: 'Cargar un cobro', titulo: 'Suma la propina aparte (opcional)',
+      html: H('Cobros de hoy') + '<div class="ap-b">' + RES('Puesto 4 · Corte y barba · $ 12.000 · Transferencia') + '<h5>Propina</h5>' +
+        '<div class="inp"><small>Monto de la propina</small>$ 1.000</div><p class="ap-nota">¿Cómo dejó la propina?</p>' +
+        '<div class="g2"><div class="bt sel">Efectivo</div><div class="bt">Transferencia</div></div><div class="cta toca">Guardar cobro</div>' +
+        '<div class="cta sec">Deshacer último</div></div>' },
+    { grupo: 'Cargar un cobro', titulo: 'Queda guardado y la pantalla vuelve a cero', dur: 3000,
+      html: H('Cobros de hoy') + '<div class="ap-b centro"><div class="tilde">✓</div><h5>Cobro guardado</h5><p class="ap-nota">Puesto 4 · Corte y barba $ 12.000 por transferencia · Propina $ 1.000 en efectivo</p>' +
+        TOT('$ 83.000', '$ 125.000') + '</div>' },
+    { grupo: 'Sin internet', titulo: 'Se corta internet: sigue cobrando', dur: 3600,
+      html: H('Cobros de hoy') + '<div class="ap-b"><div class="caja"><b>Sin conexión a internet</b><span class="ap-nota">2 cobros guardados en la tablet. Se suben solos cuando vuelva la conexión.</span></div>' +
+        '<h5>Últimos cobros</h5>' +
+        '<div class="row"><div class="n">18:42 · Puesto 2 · Corte<small>sin subir</small></div><span class="mn">$ 8.000</span></div>' +
+        '<div class="row"><div class="n">18:35 · Puesto 5 · Barba<small>sin subir</small></div><span class="mn">$ 5.000</span></div>' +
+        '<div class="row"><div class="n">18:20 · Puesto 4 · Corte y barba</div><span class="mn">$ 12.000</span></div></div>' },
+    { grupo: 'Sin internet', titulo: 'Vuelve internet y se suben solos', dur: 3200,
+      html: H('Cobros de hoy') + '<div class="ap-b"><div class="okbox">Conexión recuperada · 2 cobros subidos, con su hora original.</div>' +
+        '<h5>Últimos cobros</h5>' +
+        '<div class="row"><div class="n">18:42 · Puesto 2 · Corte</div><span class="mn ok">✓ $ 8.000</span></div>' +
+        '<div class="row"><div class="n">18:35 · Puesto 5 · Barba</div><span class="mn ok">✓ $ 5.000</span></div>' +
+        '<div class="row"><div class="n">18:20 · Puesto 4 · Corte y barba</div><span class="mn">$ 12.000</span></div></div>' },
+    { grupo: 'Fin del día', titulo: 'El cierre se arma solo', dur: 4000,
+      html: H('Cierre del día') + '<div class="ap-b"><p class="ap-nota">Sábado · totales del día</p>' + TOT('$ 96.000', '$ 130.000') +
+        '<table class="tabla"><thead><tr><th>Puesto</th><th class="r">Atenc.</th><th class="r">Cobrado</th><th class="r">Propinas</th></tr></thead><tbody>' +
+        '<tr><td>Puesto 1</td><td class="r">8</td><td class="r">$ 64.000</td><td class="r">$ 3.000</td></tr>' +
+        '<tr class="toca"><td>Puesto 2</td><td class="r">6</td><td class="r">$ 48.000</td><td class="r">$ 2.000</td></tr>' +
+        '<tr><td>Puesto 4</td><td class="r">7</td><td class="r">$ 75.000</td><td class="r">$ 1.000</td></tr>' +
+        '<tr><td>Puesto 5</td><td class="r">4</td><td class="r">$ 32.000</td><td class="r">$ 0</td></tr></tbody>' +
+        '<tfoot><tr><td>Total</td><td class="r">25</td><td class="r">$ 219.000</td><td class="r">$ 6.000</td></tr></tfoot></table>' +
+        '<div class="cta">Cerrar día</div></div>' },
+    { grupo: 'Administración', titulo: 'Entra con el PIN del dueño',
+      html: H('Administración') + '<div class="ap-b centro"><h5 style="margin-top:20px">Ingresá el PIN</h5><div class="g3" style="max-width:180px;margin:6px auto">' +
+        '<div class="bt">●●</div><div class="bt">●●</div><div class="bt">●●</div></div><div class="g3">' +
+        ['1','2','3','4','5','6','7','8','9'].map(function (n) { return '<div class="bt' + (n === '7' ? ' toca' : '') + '">' + n + '</div>'; }).join('') +
+        '</div><p class="ap-nota">5 intentos fallidos: se bloquea, cada vez por más tiempo</p></div>' },
+    { grupo: 'Administración', titulo: 'Carga los servicios de su rubro y ajusta precios', dur: 3800,
+      html: H('Administración', 'Nails Studio') + '<div class="ap-b"><h5>Servicios típicos de un rubro</h5><div class="g3">' +
+        '<div class="bt"><small>+</small>Barbería</div><div class="bt toca"><small>+</small>Uñas</div><div class="bt"><small>+</small>Estética</div></div>' +
+        '<h5>Servicios y precios</h5>' +
+        '<div class="row"><div class="n">Esmaltado semipermanente</div><span class="mn">$ 9.000</span></div>' +
+        '<div class="row"><div class="n">Uñas esculpidas</div><span class="mn toca">$ 14.000</span></div>' +
+        '<div class="row"><div class="n">Manicura</div><span class="mn">$ 6.000</span></div>' +
+        '<div class="cta sec">+ Agregar puesto</div></div>' }
+  ]
+});
+</script>
+</body>
+</html>

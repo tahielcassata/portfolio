@@ -339,26 +339,26 @@ footer { padding-block: 22px 30px; font-size: 13px; opacity: .65; }
       </div>
     </article>
 
-    <!-- Pagos barbería -->
+    <!-- Control de caja diario -->
     <article class="ot">
       <div class="ot-top">
-        <span class="label">Para: <b>peluquería y barbería</b></span>
-        <span class="estado ok">Funcionando</span>
+        <span class="label">Para: <b>negocios de servicios</b></span>
+        <span class="estado ok">Terminado</span>
       </div>
       <div class="ot-body">
         <div class="ot-txt">
-          <h3>Registro de pagos</h3>
-          <div class="campo"><span class="label">Problema</span><p>Los cobros se anotaban a mano en papel y el cierre del día se contaba a mano, puesto por puesto.</p></div>
+          <h3>Control de caja diario</h3>
+          <div class="campo"><span class="label">Problema</span><p>En barberías, peluquerías y centros de estética los cobros se anotaban en papel y el cierre del día se contaba a mano, puesto por puesto, con efectivo, transferencias y propinas mezclados.</p></div>
           <div class="campo"><span class="label">Solución</span>
             <ul>
-              <li>Web app adaptable a celular, tablet y PC para cargar cada cobro en segundos.</li>
-              <li>Efectivo o transferencia, por puesto de trabajo, con propinas separadas.</li>
-              <li>Cierre del día automático: total general y, por puesto, cortes, plata y propinas.</li>
-              <li>Sección de administración con PIN para agregar puestos y cambiar precios.</li>
+              <li>Web app para tablet, celular o PC: cada cobro se carga en segundos por puesto de trabajo, con la propina aparte.</li>
+              <li>Cierre del día automático: totales y, por puesto, atenciones, plata y propinas a entregar.</li>
+              <li>Sigue funcionando sin internet y sube los cobros solo cuando vuelve la conexión, sin duplicarlos.</li>
+              <li>Administración con PIN y plantillas por rubro, y un panel de licencias para gestionar el servicio.</li>
             </ul>
           </div>
-          <div class="campo"><span class="label">Con</span><div class="stack"><span>Google Apps Script</span><span>JavaScript</span><span>HTML / CSS</span><span>Google Sheets</span><span>VS Code + clasp</span></div></div>
-          <div class="links"><a class="btn prim" href="registro-pagos.html">Ver cómo funciona →</a></div>
+          <div class="campo"><span class="label">Con</span><div class="stack"><span>Google Apps Script</span><span>JavaScript</span><span>HTML / CSS</span><span>Google Sheets</span><span>VS Code + clasp</span><span>Node.js (pruebas)</span></div></div>
+          <div class="links"><a class="btn prim" href="control-de-caja-diario.html">Ver cómo funciona →</a><a class="btn" href="https://github.com/tahielcassata/control-de-caja-diario" target="_blank" rel="noopener">Ver código en GitHub ↗</a></div>
         </div>
         <div class="ot-vis">
           <div class="cierre">
@@ -366,13 +366,13 @@ footer { padding-block: 22px 30px; font-size: 13px; opacity: .65; }
             <span class="label">Sábado · datos de ejemplo</span>
             <div class="tabla">
               <table>
-                <thead><tr><th>Puesto</th><th class="n">Cortes</th><th class="n">Cobrado</th><th class="n">Propinas</th></tr></thead>
+                <thead><tr><th>Puesto</th><th class="n">Atenc.</th><th class="n">Cobrado</th><th class="n">Propinas</th></tr></thead>
                 <tbody>
-                  <tr><td>Puesto 1</td><td class="n">9</td><td class="n">$ 108.000</td><td class="n">$ 6.000</td></tr>
-                  <tr><td>Puesto 2</td><td class="n">7</td><td class="n">$ 84.000</td><td class="n">$ 3.500</td></tr>
-                  <tr><td>Puesto 3</td><td class="n">5</td><td class="n">$ 60.000</td><td class="n">$ 2.000</td></tr>
+                  <tr><td>Puesto 1</td><td class="n">8</td><td class="n">$ 64.000</td><td class="n">$ 3.000</td></tr>
+                  <tr><td>Puesto 2</td><td class="n">6</td><td class="n">$ 48.000</td><td class="n">$ 2.000</td></tr>
+                  <tr><td>Puesto 4</td><td class="n">7</td><td class="n">$ 75.000</td><td class="n">$ 1.000</td></tr>
                 </tbody>
-                <tfoot><tr><td>Total</td><td class="n">21</td><td class="n">$ 252.000</td><td class="n">$ 11.500</td></tr></tfoot>
+                <tfoot><tr><td>Total</td><td class="n">21</td><td class="n">$ 187.000</td><td class="n">$ 6.000</td></tr></tfoot>
               </table>
             </div>
           </div>
